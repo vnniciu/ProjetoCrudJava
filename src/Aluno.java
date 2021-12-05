@@ -12,6 +12,11 @@ public class Aluno extends Pessoa {
 		this.notaFinalCurso = notaFinalCurso;
 		
 	}
+	
+	public Aluno(String nome)
+	{
+		super(nome);
+	}
 
 	public float getNotaFinalCurso() {
 		return notaFinalCurso;

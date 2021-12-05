@@ -17,6 +17,10 @@ public class Pessoa {
 		this.dataCadastro = dataCadastro;
 		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
 	}
+	public Pessoa(String nome)
+	{
+		this.nome = nome;
+	}
 
 	public String getNome() {
 		return nome;

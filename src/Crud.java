@@ -60,6 +60,7 @@ public class Crud {
 				
 				case 3:
 					System.out.println("Atualizando");
+					alterar();
 					
 				break;
 				
@@ -95,8 +96,15 @@ public class Crud {
 		}
 		LocalDate dataCadastro = java.time.LocalDate.now();
 		LocalDate dataUltimaAtualizacao = java.time.LocalDate.now();
-		System.out.println("Digite a nota final do aluno no curso:");
-		String notaFinalSc = sc.next();
+		String notaFinalSc= null;
+		System.out.println("Deseja adicionar a nota do final do curso? Digite 's' para sim e 'n' para nao");
+		String respostaNota = sc.next();
+		if(respostaNota.equals("s"))
+		{
+			System.out.println("Digite a nota final do aluno no curso:");
+			notaFinalSc = sc.next();
+		}
+		
 		
 		if(notaFinalSc== null)
 		{
@@ -111,10 +119,67 @@ public class Crud {
 		}
 		
 	}
+	
 	public static void listar() {
+		System.out.println("Alunos:");
 		for	(Aluno a : alunoList)
 		{
 			System.out.println(a);
 		}
+		System.out.println("\nPessoas");
+		for	(Pessoa p : pessoaList)
+		{
+			System.out.println(p);
+		}
 	}
+
+	public static Aluno buscarNomeAluno(String nome)
+	{
+		
+		for (Aluno a: alunoList)
+		{
+			if(a.getNome().equals(nome)) {
+				return a;
+			}
+		}
+		return null;		
+	
+	}
+	
+	public static Pessoa buscarNomePessoa(String nome)
+	{
+	
+		for(Pessoa p: pessoaList)
+		{
+			if(p.getNome().equals(nome))
+			{
+				return p;
+			}
+		}
+		return null;
+	}
+
+	public static void alterar()
+	{
+		System.out.println("Digite o nome da pessoa/aluno que deseja fazer alteracoes no cadastro:");
+		String nome = sc.next();
+		Pessoa pe = new Pessoa(nome);
+		Aluno al = new Aluno(nome);
+		pe = buscarNomePessoa(pe.getNome());
+		if(pe!=null)
+		{
+			System.out.println("Pessoa encontrada");
+			System.out.println(pe);
+		}
+		else {
+			al = buscarNomeAluno(al.getNome());
+			if(al!=null) {
+				System.out.println("Aluno encontrado");
+			}else {
+				System.out.println("Ninguem encontrado");
+			}
+		}
+		
+	}
+	
 }
