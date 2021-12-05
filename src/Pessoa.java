@@ -64,7 +64,7 @@ public class Pessoa {
 	
 	public String toString()
 	{
-		return "Nome: "+ getNome() + " Telefone: " +  getTelefone() + " Data de nascimento: "+ getDataNascimento() + " DataCadastro: " +  getDataCadastro() +  " Data da ultima atualizacao: " + getDataUltimaAtualizacao(); 
+		return " Nome: "+ getNome() + "\n Telefone: " +  getTelefone() + "\n Data de nascimento: "+ getDataNascimento() + "\n DataCadastro: " +  getDataCadastro() +  "\n Data da ultima atualizacao: " + getDataUltimaAtualizacao() + "\n\n"; 
 	}
 	
 }

@@ -59,13 +59,12 @@ public class Crud {
 				break;
 				
 				case 3:
-					System.out.println("Atualizando");
 					alterar();
 					
 				break;
 				
 				case 4:
-					System.out.println("Deletando");
+					excluir();
 					
 				break;
 				
@@ -133,50 +132,107 @@ public class Crud {
 		}
 	}
 
-	public static Aluno buscarNomeAluno(String nome)
-	{
-		
-		for (Aluno a: alunoList)
-		{
-			if(a.getNome().equals(nome)) {
-				return a;
-			}
-		}
-		return null;		
-	
-	}
-	
-	public static Pessoa buscarNomePessoa(String nome)
-	{
-	
-		for(Pessoa p: pessoaList)
-		{
-			if(p.getNome().equals(nome))
-			{
-				return p;
-			}
-		}
-		return null;
-	}
 
 	public static void alterar()
 	{
 		System.out.println("Digite o nome da pessoa/aluno que deseja fazer alteracoes no cadastro:");
 		String nome = sc.next();
-		Pessoa pe = new Pessoa(nome);
-		Aluno al = new Aluno(nome);
-		pe = buscarNomePessoa(pe.getNome());
-		if(pe!=null)
+		boolean encontrado = false;
+		if(encontrado == false)
 		{
-			System.out.println("Pessoa encontrada");
-			System.out.println(pe);
+			for(Pessoa p : pessoaList)
+			{
+				if(p.getNome().equals(nome))
+				{
+					encontrado = true;
+					System.out.println("Digite o novo nome da pessoa");
+					p.setNome(sc.next());
+					System.out.println("Digite o telefone atualizado da pessoa");
+					p.setTelefone(sc.next());
+					System.out.println("Digite a data de nascimento correta da pessoa");
+					String dataNascimento = sc.next();
+					Date dataNascimentoFormatada = null;
+					try {
+						dataNascimentoFormatada = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					p.setDataNascimento(dataNascimentoFormatada);
+					LocalDate dataUltimaAtualizacao = java.time.LocalDate.now();
+					p.setDataUltimaAtualizacao(dataUltimaAtualizacao);
+				}
+			
+			
+			}
 		}
 		else {
-			al = buscarNomeAluno(al.getNome());
-			if(al!=null) {
-				System.out.println("Aluno encontrado");
-			}else {
-				System.out.println("Ninguem encontrado");
+			for(Aluno a : alunoList)
+			{
+				if(a.getNome().equals(nome))
+				{
+					encontrado = true;
+					System.out.println("Digite o novo nome do aluno");
+					a.setNome(sc.next());
+					System.out.println("Digite o telefone atualizado do aluno");
+					a.setTelefone(sc.next());
+					System.out.println("Digite a data de nascimento correta do aluno");
+					String dataNascimento = sc.next();
+					Date dataNascimentoFormatada = null;
+					try {
+						dataNascimentoFormatada = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					a.setDataNascimento(dataNascimentoFormatada);
+					LocalDate dataUltimaAtualizacao = java.time.LocalDate.now();
+					a.setDataUltimaAtualizacao(dataUltimaAtualizacao);
+				}
+				else {
+					System.out.println("Aluno não encontrado");
+				}
+			
+			
+			}
+		}
+		
+	}
+	
+	
+	public static void excluir()
+	{
+		System.out.println("Digite o nome da pessoa/aluno que deseja excluir");
+		String nome = sc.next();
+		boolean encontrado = false;
+		int x = -1;
+		if(encontrado == false)
+		{
+			for(Pessoa p : pessoaList)
+			{
+				if(p.getNome().equals(nome))
+				{
+					encontrado = true;
+					x = pessoaList.indexOf(p);
+					pessoaList.remove(x);
+				}
+			
+			
+			}
+		}
+		else {
+			for(Aluno a : alunoList)
+			{
+				if(a.getNome().equals(nome))
+				{
+					encontrado = true;
+					x = pessoaList.indexOf(a);
+					pessoaList.remove(a);
+					
+				}
+				else {
+					System.out.println("Aluno não encontrado");
+				}
+			
+			
 			}
 		}
 		
