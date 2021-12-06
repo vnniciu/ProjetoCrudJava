@@ -62,6 +62,7 @@ public class Pessoa {
 		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return " Nome: "+ getNome() + "\n Telefone: " +  getTelefone() + "\n Data de nascimento: "+ getDataNascimento() + "\n DataCadastro: " +  getDataCadastro() +  "\n Data da ultima atualizacao: " + getDataUltimaAtualizacao() + "\n\n"; 

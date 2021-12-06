@@ -3,6 +3,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -203,39 +204,32 @@ public class Crud {
 		System.out.println("Digite o nome da pessoa/aluno que deseja excluir");
 		String nome = sc.next();
 		boolean encontrado = false;
-		int x = -1;
-		if(encontrado == false)
+
+		Iterator<Pessoa> p = pessoaList.iterator();
+		while(p.hasNext())
 		{
-			for(Pessoa p : pessoaList)
+			Pessoa pessoa = p.next();
+			if(pessoa.getNome().equals(nome))
 			{
-				if(p.getNome().equals(nome))
-				{
-					encontrado = true;
-					x = pessoaList.indexOf(p);
-					pessoaList.remove(x);
-				}
-			
-			
-			}
-		}
-		else {
-			for(Aluno a : alunoList)
-			{
-				if(a.getNome().equals(nome))
-				{
-					encontrado = true;
-					x = pessoaList.indexOf(a);
-					pessoaList.remove(a);
-					
-				}
-				else {
-					System.out.println("Aluno não encontrado");
-				}
-			
-			
+				encontrado = true;		
+				p.remove();
 			}
 		}
 		
+		Iterator<Aluno> a = alunoList.iterator();
+		while(a.hasNext())
+		{
+			Aluno aluno= a.next();
+			if(aluno.getNome().equals(nome))
+			{
+				encontrado = true;	
+				a.remove();
+			}	
+		}
+		
+		if(encontrado!=true){
+			System.out.println("Aluno não encontrado");
+		}
 	}
 	
 }

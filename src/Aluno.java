@@ -25,6 +25,7 @@ public class Aluno extends Pessoa {
 	public void setNotaFinalCurso(float notaFinalCurso) {
 		this.notaFinalCurso = notaFinalCurso;
 	}
+	@Override
 	public String toString()
 	{
 		return " Nome: "+ getNome() + "\n Telefone: " +  getTelefone() 
