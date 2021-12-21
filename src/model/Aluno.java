@@ -1,11 +1,12 @@
+package model;
 import java.time.LocalDate;
 import java.util.Date;
 
 public class Aluno extends Pessoa {
 
-	private float notaFinalCurso;
+	private Float notaFinalCurso;
 	
-	public Aluno(String nome, String telefone, Date dataNascimento, LocalDate dataCadastro, LocalDate dataUltimaAtualizacao, float notaFinalCurso) 
+	public Aluno(String nome, String telefone, Date dataNascimento, LocalDate dataCadastro, LocalDate dataUltimaAtualizacao, Float notaFinalCurso) 
 	{
 		
 		super(nome, telefone, dataNascimento, dataCadastro, dataUltimaAtualizacao);
@@ -18,17 +19,18 @@ public class Aluno extends Pessoa {
 		super(nome);
 	}
 
-	public float getNotaFinalCurso() {
+	public Float getNotaFinalCurso() {
 		return notaFinalCurso;
 	}
 
-	public void setNotaFinalCurso(float notaFinalCurso) {
+	public void setNotaFinalCurso(Float notaFinalCurso) {
 		this.notaFinalCurso = notaFinalCurso;
 	}
-	@Override
+
+	
 	public String toString()
 	{
-		return " Nome: "+ getNome() + "\n Telefone: " +  getTelefone() 
+		return "Aluno:\n Nome: "+ getNome() + "\n Telefone: " +  getTelefone() 
 		+ "\n Data de nascimento: "+ getDataNascimento() 
 		+ "\n DataCadastro: " +  getDataCadastro() +  "\n Data da ultima atualizacao: " + getDataUltimaAtualizacao()
 		+ "\n Nota final do curso: " + getNotaFinalCurso()+ "\n\n" ;  
