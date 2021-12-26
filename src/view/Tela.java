@@ -12,11 +12,11 @@ public class Tela {
 	{
 		System.out.println("----------------------------------MENU---------------------------------\n");
 		System.out.println("				DIGITE\n");
-		System.out.println("	1 	para Cadastrar Pessoa ou Aluno");
-		System.out.println("	2 	para Listar todas as pessoas e alunos");
-		System.out.println("	3 	para Atualizar Pessoa ou Aluno");
-		System.out.println("	4 	para Deletar Pessoa ou Aluno");
-		System.out.println("	0 	para sair do programa\n");
+		System.out.println("	1 -	para Cadastrar Pessoa ou Aluno");
+		System.out.println("	2 -	para Listar todas as pessoas e alunos");
+		System.out.println("	3 -	para Atualizar Pessoa ou Aluno");
+		System.out.println("	4 -	para Deletar Pessoa ou Aluno");
+		System.out.println("	0 -	para sair do programa\n");
 		System.out.println("-------------------------------------------------------------------");
 		
 	}
@@ -50,7 +50,7 @@ public class Tela {
 					
 				break;
 				
-				case 2:
+				case 2:	
 					CrudController.listar();
 					
 				break;

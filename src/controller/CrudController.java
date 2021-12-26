@@ -23,17 +23,23 @@ public class CrudController {
 		return resposta;
 	}
 	
+	public static Date formataData(String data)
+	{
+		Date dataFormatada = null;
+		try {
+			dataFormatada = new SimpleDateFormat("dd/MM/yyyy").parse(data);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return dataFormatada;
+	}
+	
 	public static void cadastrar()
 	{
 		String nome = capturaString("Digite o nome da pessoa/aluno: ");
 		String telefone = capturaString("Digite o telefone da pessoa/aluno: ");
 		String dataNascimento = capturaString("Digite a data de nascimento da pessoa/aluno: ");
-		Date dataNascimentoFormatada = null;
-		try {
-			dataNascimentoFormatada = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		Date dataNascimentoFormatada = formataData(dataNascimento);
 		LocalDate dataCadastro = java.time.LocalDate.now();
 		LocalDate dataUltimaAtualizacao = java.time.LocalDate.now();
 		String notaFinalSc= null;
@@ -49,7 +55,6 @@ public class CrudController {
 			Pessoa pessoa = new Pessoa(nome, telefone, dataNascimentoFormatada, dataCadastro, dataUltimaAtualizacao);
 			pessoaList.add(pessoa);
 		}
-		
 	}
 	
 	public static void listar() {
@@ -58,11 +63,9 @@ public class CrudController {
 			System.out.println("Lista Vazia!");
 		}
 		else {
-
 			for	(Pessoa p : pessoaList)
 			{
 				System.out.println(p);
-				
 			}
 		}
 	}
@@ -75,20 +78,13 @@ public class CrudController {
 		{
 			for(Pessoa p : pessoaList)
 			{
-				
-					
 				if(p.getNome().equals(nome))
 				{
 					encontrado = true;
 					p.setNome(capturaString("Digite o novo nome da pessoa"));
 					p.setTelefone(capturaString("Digite o telefone atualizado da pessoa"));
 					String dataNascimento = capturaString("Digite a data de nascimento correta da pessoa");
-					Date dataNascimentoFormatada = null;
-					try {
-						dataNascimentoFormatada = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
-					} catch (ParseException e) {
-						e.printStackTrace();
-					}
+					Date dataNascimentoFormatada = formataData(dataNascimento);
 					p.setDataNascimento(dataNascimentoFormatada);
 					LocalDate dataUltimaAtualizacao = java.time.LocalDate.now();
 					p.setDataUltimaAtualizacao(dataUltimaAtualizacao);
@@ -102,7 +98,6 @@ public class CrudController {
 		else {
 			System.out.println("Pessoa/Aluno(a) não encontrado(a)");
 		}
-		
 	}
 	
 	public static void excluir()
@@ -119,7 +114,6 @@ public class CrudController {
 				p.remove();
 			}
 		}
-		
 		if(encontrado!=true){
 			System.out.println("Aluno não encontrado");
 		}

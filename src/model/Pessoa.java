@@ -63,10 +63,8 @@ public class Pessoa {
 		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
 	}
 	
-
 	public String toString()
 	{
 		return "Pessoa:\n Nome: "+ getNome() + "\n Telefone: " +  getTelefone() + "\n Data de nascimento: "+ getDataNascimento() + "\n DataCadastro: " +  getDataCadastro() +  "\n Data da ultima atualizacao: " + getDataUltimaAtualizacao() + "\n\n"; 
 	}
-	
 }
